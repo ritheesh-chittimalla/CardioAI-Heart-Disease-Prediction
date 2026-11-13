@@ -1,0 +1,603 @@
+.prediction-page {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+}
+
+.prediction-intro {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.prediction-label {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    color: #2563eb;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.3px;
+    margin-bottom: 10px;
+}
+
+.prediction-intro h2 {
+    margin: 0;
+    color: #172033;
+    font-size: 24px;
+    letter-spacing: -0.6px;
+}
+
+.prediction-intro p {
+    margin: 8px 0 0;
+    color: #8290a4;
+    font-size: 12px;
+}
+
+/* Patient form */
+
+.prediction-form-panel,
+.prediction-result-panel,
+.explanation-panel {
+    background: #ffffff;
+    border: 1px solid #e9edf4;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0 2px 8px rgba(30, 50, 80, 0.025);
+}
+
+.form-section-heading {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-bottom: 21px;
+    border-bottom: 1px solid #edf0f5;
+    margin-bottom: 23px;
+}
+
+.form-heading-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 10px;
+    background: #eaf2ff;
+    color: #2563eb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-section-heading h3 {
+    margin: 0;
+    color: #1d293d;
+    font-size: 14px;
+}
+
+.form-section-heading p {
+    margin: 5px 0 0;
+    color: #929daf;
+    font-size: 10px;
+}
+
+.patient-form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 23px 25px;
+}
+
+.patient-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-width: 0;
+}
+
+.patient-field label {
+    color: #344258;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.required-mark {
+    color: #dc5252;
+    margin-left: 4px;
+}
+
+.patient-field input,
+.patient-field select {
+    width: 100%;
+    height: 43px;
+    padding: 0 12px;
+    border: 1px solid #dfe5ee;
+    border-radius: 7px;
+    background: #ffffff;
+    color: #263449;
+    font-size: 12px;
+    outline: none;
+    transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.patient-field input:focus,
+.patient-field select:focus {
+    border-color: #4b82ed;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.09);
+}
+
+.patient-field input::placeholder {
+    color: #a5afbd;
+}
+
+.patient-field small {
+    color: #929daf;
+    font-size: 10px;
+    line-height: 1.5;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 12px;
+    border-top: 1px solid #edf0f5;
+    padding-top: 21px;
+    margin-top: 25px;
+}
+
+.reset-button,
+.submit-prediction-button {
+    min-height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border-radius: 7px;
+    padding: 0 16px;
+    font-size: 11px;
+    font-weight: 600;
+    transition: background 0.2s;
+}
+
+.reset-button {
+    border: 1px solid #dfe5ee;
+    background: #ffffff;
+    color: #536176;
+}
+
+.reset-button:hover {
+    background: #f5f7fb;
+}
+
+.reset-button:disabled,
+.submit-prediction-button:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+}
+
+.submit-prediction-button {
+    border: 0;
+    background: #2563eb;
+    color: #ffffff;
+}
+
+.submit-prediction-button:hover:not(:disabled) {
+    background: #1d4ed8;
+}
+
+.loading-icon {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.prediction-error {
+    display: flex;
+    align-items: flex-start;
+    gap: 9px;
+    margin-top: 22px;
+    padding: 13px;
+    border-radius: 7px;
+    background: #fff1f1;
+    color: #b42318;
+    font-size: 11px;
+    line-height: 1.5;
+}
+
+.prediction-error svg {
+    flex-shrink: 0;
+}
+
+/* Prediction results */
+
+.prediction-result-panel {
+    animation: result-appear 0.3s ease;
+}
+
+@keyframes result-appear {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.result-heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 19px;
+}
+
+.result-label {
+    color: #2563eb;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1.3px;
+}
+
+.result-heading h3 {
+    margin: 6px 0 0;
+    color: #1d293d;
+    font-size: 16px;
+}
+
+.result-status {
+    padding: 20px;
+    border-radius: 9px;
+    border: 1px solid;
+}
+
+.result-positive {
+    background: #fff5f3;
+    border-color: #f5d2ca;
+    color: #a83b2c;
+}
+
+.result-negative {
+    background: #effaf4;
+    border-color: #ccebd8;
+    color: #18794e;
+}
+
+.result-status-label {
+    font-size: 10px;
+    font-weight: 600;
+}
+
+.result-status h2 {
+    font-size: 21px;
+    margin: 9px 0 5px;
+}
+
+.result-status p {
+    font-size: 11px;
+    margin: 0;
+}
+
+.probability-section {
+    margin-top: 24px;
+}
+
+.probability-heading {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    color: #718096;
+    font-size: 11px;
+    margin-bottom: 11px;
+}
+
+.probability-heading strong {
+    color: #1d293d;
+    font-size: 17px;
+}
+
+.probability-track {
+    width: 100%;
+    height: 10px;
+    background: #e9edf4;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.probability-fill {
+    height: 100%;
+    background: #3978e8;
+    border-radius: 20px;
+    transition: width 0.4s ease;
+}
+
+.probability-details {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+    color: #929daf;
+    font-size: 10px;
+    margin-top: 10px;
+}
+
+.result-disclaimer {
+    margin-top: 22px;
+    padding: 13px;
+    background: #f4f7fc;
+    border-radius: 7px;
+    color: #75849b;
+    font-size: 10px;
+    line-height: 1.7;
+}
+
+/* SHAP explainability */
+
+.explanation-panel {
+    animation: result-appear 0.35s ease;
+}
+
+.explanation-heading {
+    display: flex;
+    align-items: flex-start;
+    gap: 13px;
+    padding-bottom: 22px;
+    border-bottom: 1px solid #edf0f5;
+}
+
+.explanation-title-icon {
+    width: 43px;
+    height: 43px;
+    border-radius: 10px;
+    background: #f1edff;
+    color: #7955d9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.explanation-heading h3 {
+    margin: 6px 0;
+    color: #1d293d;
+    font-size: 16px;
+}
+
+.explanation-heading p {
+    margin: 0;
+    color: #929daf;
+    font-size: 11px;
+    line-height: 1.5;
+}
+
+.shap-summary-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 15px;
+    margin: 21px 0 26px;
+}
+
+.shap-summary-card {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    padding: 16px;
+    background: #f6f8fc;
+    border: 1px solid #edf0f5;
+    border-radius: 9px;
+}
+
+.shap-summary-card span {
+    color: #8591a4;
+    font-size: 10px;
+}
+
+.shap-summary-card strong {
+    color: #263449;
+    font-size: 19px;
+    font-variant-numeric: tabular-nums;
+}
+
+.shap-section-heading {
+    margin-bottom: 17px;
+}
+
+.shap-section-heading h4 {
+    margin: 0;
+    color: #263449;
+    font-size: 13px;
+}
+
+.shap-section-heading p {
+    color: #929daf;
+    font-size: 10px;
+    margin: 6px 0 0;
+}
+
+.shap-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 18px;
+    padding: 12px;
+    background: #f8f9fc;
+    border-radius: 7px;
+    margin-bottom: 16px;
+}
+
+.shap-legend span {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    color: #68758a;
+    font-size: 10px;
+}
+
+.shap-legend i {
+    display: inline-block;
+    width: 9px;
+    height: 9px;
+    border-radius: 3px;
+}
+
+.legend-positive {
+    background: #dc765f;
+}
+
+.legend-negative {
+    background: #4385d8;
+}
+
+.shap-list {
+    display: flex;
+    flex-direction: column;
+    gap: 19px;
+}
+
+.shap-item {
+    padding-bottom: 16px;
+    border-bottom: 1px solid #edf0f5;
+}
+
+.shap-item:last-child {
+    border-bottom: 0;
+}
+
+.shap-item-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-bottom: 9px;
+}
+
+.shap-feature-name {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    color: #344258;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.shap-rank {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    border-radius: 6px;
+    background: #f0f3f8;
+    color: #748197;
+    font-size: 9px;
+}
+
+.shap-positive-value,
+.shap-negative-value {
+    font-size: 11px;
+    font-variant-numeric: tabular-nums;
+}
+
+.shap-positive-value {
+    color: #c45b49;
+}
+
+.shap-negative-value {
+    color: #3978c9;
+}
+
+.shap-bar-track {
+    height: 8px;
+    background: #edf1f6;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.shap-bar {
+    height: 100%;
+    border-radius: 20px;
+    transition: width 0.4s ease;
+}
+
+.shap-bar-positive {
+    background: #dc765f;
+}
+
+.shap-bar-negative {
+    background: #4385d8;
+}
+
+.shap-item-description {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 8px;
+    color: #8491a5;
+    font-size: 9px;
+}
+
+.shap-feature-value {
+    margin-left: auto;
+    color: #a0aabb;
+}
+
+.shap-disclaimer {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 14px;
+    margin-top: 19px;
+    border-radius: 8px;
+    background: #f4f7fc;
+    color: #718096;
+}
+
+.shap-disclaimer svg {
+    flex-shrink: 0;
+    margin-top: 1px;
+}
+
+.shap-disclaimer p {
+    margin: 0;
+    font-size: 10px;
+    line-height: 1.7;
+}
+
+/* Responsive design */
+
+@media (max-width: 600px) {
+
+    .prediction-form-panel,
+    .prediction-result-panel,
+    .explanation-panel {
+        padding: 17px;
+    }
+
+    .patient-form-grid {
+        grid-template-columns: 1fr;
+        gap: 19px;
+    }
+
+    .form-actions {
+        flex-direction: column-reverse;
+    }
+
+    .reset-button,
+    .submit-prediction-button {
+        width: 100%;
+    }
+
+    .prediction-intro h2 {
+        font-size: 21px;
+    }
+
+    .shap-summary-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .shap-feature-value {
+        margin-left: 0;
+    }
+}
